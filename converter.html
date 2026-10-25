@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>temperature conversion:</title>
+</head>
+<body>
+<style>
+*{
+padding: 0;
+margin: 0;
+font-family: arial,sans-serif;
+color: #fff;
+}
+body{
+background: linear-gradient(45deg,orangered,rgb(10, 52, 204));
+display: flex;
+justify-content: center;
+align-items: center;
+height: 100vh;
+}
+#container{
+background: rgb(9, 9, 86);
+padding: 8rem 2rem;
+border: 5px solid transparent;
+border-radius: 5%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 5px;
+
+}
+h1{
+color: orangered;
+}
+#btn{
+background: rgb(10, 52, 204);
+width: 95%;
+padding: 10px 1rem;
+border: 2px solid transparent;
+border-radius: 10px;
+}
+#temperature{
+border: 2px solid rgb(10, 52, 204);
+border-radius: 10px;
+font-size: 16px;
+background: transparent;
+width: 90%;
+padding: 8px 1rem;
+outline: none;
+}
+#btn:hover{
+background: orangered;
+}
+div{
+width: 90%;
+display: flex;
+gap: 15px;
+}
+#results{
+color: orangered;
+}
+</style>
+<form id="container">
+<h1 id="label">Temperature Converter:</h1>
+<input type="number" id="temperature" placeholder="temperature" value="0">
+<div class="todegree">
+<input type="checkbox" id="toDegreesCelcius">
+<label for="toDegreesCelcius">Kelvin to Degrees </label>
+</div>
+<div class="tokelvin">
+<input type="checkbox" id="toKelvin">
+<label for="toKelvin">Degrees to Kelvin </label>
+</div>
+<button id="btn" type="button" onclick="calculate ()"><h3>Submit</h3></button>
+<div id="temp">Your temperature is:<h4 id="results"></h4></div>
+</form>
+<script>
+let toDegreesCelcius = document.getElementById("toDegreesCelcius");
+let toKelvin = document.getElementById("toKelvin");
+let btn = document.getElementById("btn");
+let results = document.getElementById("results");
+let answer;
+
+
+function calculate (){
+if (toKelvin.checked && toDegreesCelcius.checked){
+results.textContent = "Error!check only one!";
+results.style.color = "red"
+}
+else if (toDegreesCelcius.checked){
+answer = Number(document.getElementById("temperature").value) - 273;
+results.textContent = answer;
+}
+else if (toKelvin.checked){
+answer = Number(document.getElementById("temperature").value) + 273;
+results.textContent = answer;
+}
+else if(!toKelvin.checked && !toDegreesCelcius.checked){
+answer = "Check one option!";
+results.textContent = answer;
+}
+
+else{
+answer = "Enter Temperature!";
+results.textContent = answer;
+}
+};
+
+</script>
+</body>
+</html>
